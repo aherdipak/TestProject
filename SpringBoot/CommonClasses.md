@@ -160,6 +160,60 @@ public class User implements CommonMethod{
 
 ```
 //------------------------------------------------------------------------------------
+
+```
+package com.dac.app.user.service;
+
+import javax.servlet.http.HttpServletRequest;
+
+import com.dac.app.user.bean.User;
+
+public interface UserService {
+
+	boolean addUser(User user, HttpServletRequest request);
+
+}
+
+```
+//------------------------------------------------------------------------------------
+
+```
+package com.dac.app.user.service;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.dac.app.comman.dao.CommonDao;
+import com.dac.app.user.bean.User;
+import com.dac.app.user.dao.UserDao;
+
+@Service
+public class UserServiceImpl implements UserService {
+
+	@Autowired
+	private UserDao userDao;
+	
+	@Autowired
+	private CommonDao commonDao;
+	
+	@Override
+	public boolean addUser(User user,HttpServletRequest request) {
+		boolean status = false;
+		try {
+			//status = userDao.addUser(user);
+			status = commonDao.addData(user);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return status;
+	}
+	
+}
+
+```
+//------------------------------------------------------------------------------------
 ```
 package com.dac.app.comman.dao;
 
