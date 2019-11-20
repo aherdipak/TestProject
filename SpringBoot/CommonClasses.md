@@ -52,3 +52,19 @@ public class Application implements CommandLineRunner {
 
 ```
 //------------------------------------------------------------------------------------
+
+```
+package com.dac.app.comman.dao;
+
+import java.util.List;
+import java.util.Map;
+
+public interface CommonDao {
+
+	boolean addData(Object obj);
+
+	List<?> getData(String objName,Map<String,String>whereMap);
+
+}
+
+```
